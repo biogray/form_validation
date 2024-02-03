@@ -20,19 +20,24 @@ const validateForm = (formSelector) => {
        const validateSingleFormGroup = (formGroup) => {
             const label = formGroup.querySelector('label');
             const input = formGroup.querySelector('input', 'textarea');
-            const errorContainer = formGroup.querySelector('.error');
+            const errorContainer = formGroup.querySelector('.error'); console.log('errorContainer',errorContainer.textContent )
+            
             const errorIcon = formGroup.querySelector('.error-icon');
             const successIcon = formGroup.querySelector('.success-icon');
 
+            let formGroupError = false;
             for(const option of validationOptions) {
+                  //errorContainer.textContent = ''; my simpler solution
                   if (input.hasAttribute(option.attribute) && !option.isValid(input)) {
-                        errorContainter.textContent = option.errorMessage(input, label);
+                       errorContainer.textContent = option.errorMessage(input, label) ;
+                      console.log('errorContainer',errorContainer.textContent )
+                      formGroupError=true;
                   }
             }
+            if (!formGroupError) {errorContainer.textContent=''}
 
-            console.log('label', label)
-            console.log('input', input)
-            console.log('errorContainer', errorContainer)
+           
+            
       }
 
       formElement.setAttribute('novalidate', true);
@@ -41,7 +46,7 @@ const validateForm = (formSelector) => {
      
        event.preventDefault();
        
-       alert('submit');
+     
        console.log('submit');
        validateAllFormGroups('.formGroup');
 
@@ -50,7 +55,7 @@ const validateForm = (formSelector) => {
 
 
       const validateAllFormGroups = (formToValidate) => {
-       const formGroups = Array.from( formToValidate.querySelectorAll('.formGroup') );
+       const formGroups = Array.from( document.querySelectorAll(formToValidate) );
 
        formGroups.forEach( f => validateSingleFormGroup(f));
       }
