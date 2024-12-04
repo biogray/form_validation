@@ -55,7 +55,7 @@
   <body>
     <a
       class="px-10 text-white"
-      href="https://youtu.be/iyngFd6f8ko?feature=shared&t=2356">
+      href="https://youtu.be/iyngFd6f8ko?feature=shared&t=3270">
       The BEST way to do form validation in JavaScript
     </a>
 
@@ -106,6 +106,8 @@
                 <input   class="border-b-2 border-black outline-none py-2 w-full"
                 required
                 minlength="2"
+                customMaxLength="5"
+                
                 type="text"
                 id="firstName"
                 value=""
@@ -121,7 +123,8 @@
              
               <div>
                 <input   class="border-b-2 border-black outline-none py-2 w-full"
-                type="text"
+                required
+                type="email"
                 id="lastName"
                 value=""
                 />
@@ -137,6 +140,7 @@
                 <input   class="border-b-2 border-black outline-none py-2 w-full"
                 required
                 type="email"
+                pattern= "^(.+)@(.+)$"
                 id="email"
                 value=""
                 />
@@ -150,6 +154,8 @@
               <label for="password">Password</label>
               <div>
                 <input   class="border-b-2 border-black outline-none py-2 w-full"
+                required
+                minlength="8"
                 type="password"
                 id="password"
                 value=""
@@ -164,6 +170,9 @@
               <label for="confirmPassword">Confirm password</label>
               <div>
                 <input   class="border-b-2 border-black outline-none py-2 w-full"
+                required
+                minlength="8"
+                match="password"
                 type="password"
                 id="confirmPassword"
                 value=""
